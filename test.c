@@ -3,6 +3,12 @@
 #include <stdlib.h>
 #include "max_salary.h"
 
+void simple_test(int N, int M){
+  srand(time(NULL));
+
+
+}
+
 void stress_test(int N, int M){
   srand(time(NULL));   
   
@@ -17,30 +23,35 @@ void stress_test(int N, int M){
     
     int result1 = 0;
     heap_permutation(arr, n, n, &result1);
-    //int result2 = max_salary_fast(arr,n);
+
+    int result2 = max_salary_fast(arr,n);
     
-    // if (result1==result2){
-    //   printf("OK\n");
-    // } else{
-    //   printf("Wrong answer: correct=%d, got instead=%d\n", result1, result2);
-    //   break;  
-    // }
+    if (result1==result2){
+      printf("OK\n");
+    } else{
+      printf("Wrong answer: correct=%d, got instead=%d\n", result1, result2);
+      break;  
+    }
     free(arr);
   }  
 }
 
 int main(int argc, char **argv ){
-  if (argc < 3){
-    printf("To run: test <N> <M>\n");
+  if (argc < 4){
+    printf("To run: test <1> <N> <M> or test <2> <N> <M>\n");
     return 0;
    }
    
-   printf("What the hack");
-   int N = atoi(argv[1]);
-   int M = atoi(argv[2]);
+  if (atoi(argv[1]) == 2){
+   int N = atoi(argv[2]);
+   int M = atoi(argv[3]);
    
+   if (N < 9){
    stress_test(N, M);
+   } else{
+    printf("Invalid input. Try smaller input.");
+   }
    
    return 0;
-  
+  }
 }

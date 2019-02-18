@@ -2,9 +2,8 @@
 #include "math.h"
 #include "stdlib.h"
 
-int add_int(int a, int b){
+int add_inte(int a, int b){
     int digit = floor(log10(b))+1;
-    // printf("%d\n",digit);
     return (a*(int)pow(10, digit)+b);
 }
 
@@ -22,13 +21,10 @@ void heap_permutation(int a[], int size, int n, int *maximum) {
 
     if (size == 1) { 
         //TO DO - instead of printing, insert your code for evaluating the next candidate array
-        //print_array(a, n); 
         int max_so_far = 0;
         for (int i = 0; i < n; i++){
-            max_so_far = add_int(max_so_far,a[i]); 
-            // printf("%d\n", max_so_far);
+            max_so_far = add_inte(max_so_far,a[i]); 
         }
-        // printf("%d\n", max_so_far);
         if (max_so_far > *maximum){
             *maximum = max_so_far;
         }
@@ -50,12 +46,12 @@ void heap_permutation(int a[], int size, int n, int *maximum) {
 }
 
 // Code to test permutations
-int main() { 
-    int a[] = {2, 12, 35, 46}; 
-    int n = sizeof a/sizeof a[0]; 
-    int maximum = 0;
-    //heap_permutation(a, n, n); 
-    heap_permutation(a, n, n, &maximum);
-    printf("%d\n", maximum);
-    return 0; 
-} 
+// int main() { 
+//     int a[] = {2, 12, 35, 46}; 
+//     int n = sizeof a/sizeof a[0]; 
+//     int maximum = 0;
+//     //heap_permutation(a, n, n); 
+//     heap_permutation(a, n, n, &maximum);
+//     printf("%d\n", maximum);
+//     return 0; 
+// } 
