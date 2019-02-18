@@ -15,4 +15,5 @@ int add_int(int a, int b);
 int add_string(int a, int b, int size_a, int size_b);
 int max_salary_fast(int a[], int size);
 
+
 #endif
