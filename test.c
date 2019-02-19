@@ -31,7 +31,7 @@ void stress_test(int N, int M){
 }
 
 int main(int argc, char **argv ){
-  if (argc < 3){
+  if (argc < 4){
     printf("To run: test <1> <..> <..> <..>(array of integers separated by space) or test <2> <N> <M>\n");
     return 0;
    }
@@ -65,10 +65,13 @@ int main(int argc, char **argv ){
    printf("%f\n", N * log10(M));
    if (N * log10(M) < 9){
    stress_test(N, M);
-   } else{
+   } else if (N * log10(M) >= 9) {
     printf("Invalid input. Try smaller input.\n");
    }
    
+   else{
+    printf("Invalid input. To run: test <1> <..> <..> <..>(array of integers separated by space) or test <2> <N> <M>\n");
+   }
    return 0;
   }
 }
