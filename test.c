@@ -39,11 +39,11 @@ int main(int argc, char **argv ){
   if (atoi(argv[1]) == 1){
     
     int result1 = 0;
-    int n = argc;
+    int n = argc - 2;
     int * arr = malloc(n*sizeof(int));
     int m = 0;
-    for (int i = 2; i < n; i++){
-        arr[i] = atoi(argv[i]);
+    for (int i = 0; i < n; i++){
+        arr[i] = atoi(argv[i+2]);
         m += floor(log10((arr[i])));
         printf("%d\n",arr[i]);
     }
