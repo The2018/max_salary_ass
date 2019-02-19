@@ -45,9 +45,8 @@ int main(int argc, char **argv ){
     for (int i = 0; i < n; i++){
         arr[i] = atoi(argv[i+2]);
         m += floor(log10((arr[i])));
-        printf("%d\n",arr[i]);
     }
-    printf("%d\n", m*(n-2));
+
     if (m*(n-2) > 9){
       printf("Invalid input. Try smaller input.\n");
     } else{
@@ -62,10 +61,9 @@ int main(int argc, char **argv ){
    int N = atoi(argv[2]);
    int M = atoi(argv[3]);
    
-   printf("%f\n", N * log10(M));
-   if (N * log10(M) < 9){
+   if (N * log10(M) < 7){
    stress_test(N, M);
-   } else if (N * log10(M) >= 9) {
+   } else if (N * log10(M) >= 7) {
     printf("Invalid input. Try smaller input.\n");
    }
    
