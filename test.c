@@ -3,27 +3,6 @@
 #include <stdlib.h>
 #include "max_salary.h"
 
-void short_test (char *arr){
-  int result1 = 0;
-  int n = sizeof arr/ sizeof arr[0];
-  int m = 0;
-  int *a = malloc(sizeof n);
-  for (int i = 0; i < n; i++){
-      a[i] = atoi(arr[i]);
-      m += floor(log10((a[i])));
-      printf("%d\n",a[i]);
-      printf("%c\n",arr[i]);
-  }
-  if (m*n > 9){
-    printf("Invalid input. Try smaller input.");
-  } else{
-  heap_permutation(a, n, n, &result1);
-  int result2 = max_salary_fast(a,n);
-  printf("Max salary is %d according to naive method\n Max salary is %d according to greedy method\n", result1, result2);
-  }
-  free(a);
-}
-
 void stress_test(int N, int M){
   srand(time(NULL));   
   
@@ -53,18 +32,37 @@ void stress_test(int N, int M){
 
 int main(int argc, char **argv ){
   if (argc < 3){
-    printf("To run: test <1> <arr> or test <2> <N> <M>\n");
+    printf("To run: test <1> <..> <..> <..>(array of integers separated by space) or test <2> <N> <M>\n");
     return 0;
    }
   
   if (atoi(argv[1]) == 1){
-    short_test(argv[2]);
+    
+    int result1 = 0;
+    int n = argc;
+    int * arr = malloc(n*sizeof(int));
+    int m = 0;
+    for (int i = 2; i < n; i++){
+        arr[i] = atoi(argv[i]);
+        m += floor(log10((arr[i])));
+        printf("%d\n",arr[i]);
+    }
+    printf("%d\n", m*(n-2));
+    if (m*(n-2) > 9){
+      printf("Invalid input. Try smaller input.\n");
+    } else{
+    heap_permutation(arr, n, n, &result1);
+    int result2 = max_salary_fast(arr,n);
+    printf("Max salary is %d according to naive method\nMax salary is %d according to greedy method\n", result1, result2);
+    }
+    free(arr);
   }
 
   if (atoi(argv[1]) == 2){
    int N = atoi(argv[2]);
    int M = atoi(argv[3]);
    
+   printf("%f\n", N * log10(M));
    if (N * log10(M) < 9){
    stress_test(N, M);
    } else{
